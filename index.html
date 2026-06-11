@@ -110,6 +110,20 @@
       const [scoreError, setScoreError] = useState(null);
       const [revealedTiers, setRevealedTiers] = useState([]);
       const [copied, setCopied] = useState(false);
+      const [setupUnlocked, setSetupUnlocked] = useState(false);
+      const [passwordInput, setPasswordInput] = useState("");
+      const [passwordError, setPasswordError] = useState(false);
+
+      function tryUnlock() {
+        if (passwordInput === "TrumpCup") {
+          setSetupUnlocked(true);
+          setPasswordError(false);
+          setPasswordInput("");
+        } else {
+          setPasswordError(true);
+          setPasswordInput("");
+        }
+      }
 
       useEffect(() => {
         const hash = window.location.hash.slice(1);
@@ -313,13 +327,34 @@
 
             {assignments && (
               <div className="nav">
-                <button className={`nav-btn ${view==="leaderboard"?"active":""}`} onClick={()=>setView("leaderboard")}>Leaderboard</button>
-                <button className={`nav-btn ${view==="draw"?"active":""}`}        onClick={()=>setView("draw")}>Draw</button>
+                <button className={`nav-btn ${view==="leaderboard"?"active":""}`} onClick={()=>{setView("leaderboard");setSetupUnlocked(false);}}>Leaderboard</button>
+                <button className={`nav-btn ${view==="draw"?"active":""}`}        onClick={()=>{setView("draw");setSetupUnlocked(false);}}>Draw</button>
                 <button className={`nav-btn ${view==="setup"?"active":""}`}       onClick={()=>setView("setup")}>Setup</button>
               </div>
             )}
 
-            {view === "setup" && (
+            {view === "setup" && !setupUnlocked && (
+              <div className="card" style={{maxWidth:360,margin:"0 auto",textAlign:"center"}}>
+                <div className="card-title">Admin Access</div>
+                <p style={{fontSize:13,color:"var(--muted)",marginBottom:16,lineHeight:1.6}}>Enter the password to access setup.</p>
+                <div className="input-wrap" style={{marginBottom:12}}>
+                  <input
+                    type="password"
+                    placeholder="Password"
+                    value={passwordInput}
+                    onChange={e => { setPasswordInput(e.target.value); setPasswordError(false); }}
+                    onKeyDown={e => e.key === "Enter" && tryUnlock()}
+                    style={{textAlign:"center"}}
+                  />
+                </div>
+                {passwordError && <p style={{color:"#fca5a5",fontSize:12,marginBottom:12}}>Incorrect password</p>}
+                <button className="btn btn-white" style={{width:"100%",justifyContent:"center"}} onClick={tryUnlock}>
+                  Unlock
+                </button>
+              </div>
+            )}
+
+            {view === "setup" && setupUnlocked && (
               <div>
                 <div className="card">
                   <div className="card-title">Players</div>
