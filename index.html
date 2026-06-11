@@ -110,18 +110,38 @@
       const [scoreError, setScoreError] = useState(null);
       const [revealedTiers, setRevealedTiers] = useState([]);
       const [copied, setCopied] = useState(false);
-      const [setupUnlocked, setSetupUnlocked] = useState(false);
+      const [siteUnlocked, setSiteUnlocked] = useState(false);
+      const [isAdmin, setIsAdmin] = useState(false);
       const [passwordInput, setPasswordInput] = useState("");
       const [passwordError, setPasswordError] = useState(false);
+      const [resetLocked, setResetLocked] = useState(true);
+      const [resetPwInput, setResetPwInput] = useState("");
+      const [resetPwError, setResetPwError] = useState(false);
+      const [showResetPrompt, setShowResetPrompt] = useState(false);
 
-      function tryUnlock() {
-        if (passwordInput === "TrumpCup") {
-          setSetupUnlocked(true);
+      const PASSWORD = "TrumpCup";
+
+      function trySiteUnlock() {
+        if (passwordInput === PASSWORD) {
+          setSiteUnlocked(true);
+          setIsAdmin(true);
           setPasswordError(false);
           setPasswordInput("");
         } else {
           setPasswordError(true);
           setPasswordInput("");
+        }
+      }
+
+      function tryResetUnlock() {
+        if (resetPwInput === PASSWORD) {
+          setResetLocked(false);
+          setShowResetPrompt(false);
+          setResetPwInput("");
+          setResetPwError(false);
+        } else {
+          setResetPwError(true);
+          setResetPwInput("");
         }
       }
 
@@ -312,7 +332,31 @@
             }
           `}</style>
 
-          <div className="app">
+          {!siteUnlocked && (
+            <div style={{minHeight:"100vh",display:"flex",alignItems:"center",justifyContent:"center",padding:24}}>
+              <div className="card" style={{width:"100%",maxWidth:360,textAlign:"center"}}>
+                <div style={{fontSize:48,marginBottom:12}}>🏆</div>
+                <div className="card-title">Strategy Team World Cup Sweepstake</div>
+                <p style={{fontSize:13,color:"var(--muted)",marginBottom:20,lineHeight:1.6}}>Internal access only. Enter the password to continue.</p>
+                <div className="input-wrap" style={{marginBottom:12}}>
+                  <input
+                    type="password"
+                    placeholder="Password"
+                    value={passwordInput}
+                    onChange={e => { setPasswordInput(e.target.value); setPasswordError(false); }}
+                    onKeyDown={e => e.key === "Enter" && trySiteUnlock()}
+                    style={{textAlign:"center"}}
+                  />
+                </div>
+                {passwordError && <p style={{color:"#fca5a5",fontSize:12,marginBottom:12}}>Incorrect password</p>}
+                <button className="btn btn-white" style={{width:"100%",justifyContent:"center"}} onClick={trySiteUnlock}>
+                  Enter
+                </button>
+              </div>
+            </div>
+          )}
+
+          {siteUnlocked && <div className="app">
 
             <div className="header">
               <div className="header-badge">North America 2026</div>
@@ -329,34 +373,13 @@
 
             {assignments && (
               <div className="nav">
-                <button className={`nav-btn ${view==="leaderboard"?"active":""}`} onClick={()=>{setView("leaderboard");setSetupUnlocked(false);}}>Leaderboard</button>
-                <button className={`nav-btn ${view==="draw"?"active":""}`}        onClick={()=>{setView("draw");setSetupUnlocked(false);}}>Draw</button>
+                <button className={`nav-btn ${view==="leaderboard"?"active":""}`} onClick={()=>setView("leaderboard")}>Leaderboard</button>
+                <button className={`nav-btn ${view==="draw"?"active":""}`}        onClick={()=>setView("draw")}>Draw</button>
                 <button className={`nav-btn ${view==="setup"?"active":""}`}       onClick={()=>setView("setup")}>Setup</button>
               </div>
             )}
 
-            {view === "setup" && !setupUnlocked && (
-              <div className="card" style={{maxWidth:360,margin:"0 auto",textAlign:"center"}}>
-                <div className="card-title">Admin Access</div>
-                <p style={{fontSize:13,color:"var(--muted)",marginBottom:16,lineHeight:1.6}}>Enter the password to access setup.</p>
-                <div className="input-wrap" style={{marginBottom:12}}>
-                  <input
-                    type="password"
-                    placeholder="Password"
-                    value={passwordInput}
-                    onChange={e => { setPasswordInput(e.target.value); setPasswordError(false); }}
-                    onKeyDown={e => e.key === "Enter" && tryUnlock()}
-                    style={{textAlign:"center"}}
-                  />
-                </div>
-                {passwordError && <p style={{color:"#fca5a5",fontSize:12,marginBottom:12}}>Incorrect password</p>}
-                <button className="btn btn-white" style={{width:"100%",justifyContent:"center"}} onClick={tryUnlock}>
-                  Unlock
-                </button>
-              </div>
-            )}
-
-            {view === "setup" && setupUnlocked && (
+            {view === "setup" && (
               <div>
                 <div className="card">
                   <div className="card-title">Players</div>
@@ -380,7 +403,31 @@
                     🎰 Run the Draw
                   </button>
                   {assignments && (
-                    <button className="reset-link" onClick={resetDraw}>Reset draw</button>
+                    <span style={{marginLeft:16,display:"inline-flex",alignItems:"center",gap:8}}>
+                      {resetLocked ? (
+                        <button className="reset-link" onClick={()=>setShowResetPrompt(true)}>🔒 Reset draw</button>
+                      ) : (
+                        <button className="reset-link" onClick={resetDraw}>⚠️ Confirm reset</button>
+                      )}
+                    </span>
+                  )}
+                  {showResetPrompt && (
+                    <div style={{marginTop:16,background:"rgba(0,0,0,0.15)",borderRadius:8,padding:16}}>
+                      <p style={{fontSize:13,color:"var(--muted)",marginBottom:10}}>Enter password to unlock reset:</p>
+                      <div style={{display:"flex",gap:8,flexWrap:"wrap"}}>
+                        <input
+                          type="password"
+                          placeholder="Password"
+                          value={resetPwInput}
+                          onChange={e=>{setResetPwInput(e.target.value);setResetPwError(false);}}
+                          onKeyDown={e=>e.key==="Enter"&&tryResetUnlock()}
+                          style={{flex:1,background:"rgba(255,255,255,0.1)",border:"1px solid var(--line)",borderRadius:8,padding:"8px 12px",color:"#fff",fontFamily:"inherit",fontSize:13,outline:"none"}}
+                        />
+                        <button className="btn btn-white" style={{padding:"8px 16px",fontSize:13}} onClick={tryResetUnlock}>Unlock</button>
+                        <button className="reset-link" onClick={()=>{setShowResetPrompt(false);setResetPwInput("");setResetPwError(false);}}>Cancel</button>
+                      </div>
+                      {resetPwError && <p style={{color:"#fca5a5",fontSize:12,marginTop:8}}>Incorrect password</p>}
+                    </div>
                   )}
                 </div>
 
@@ -500,7 +547,7 @@
               </div>
             )}
 
-          </div>
+          </div>}
         </>
       );
     }
