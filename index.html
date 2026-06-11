@@ -104,6 +104,7 @@
       const [participants, setParticipants] = useState(["", "", "", "", "", ""]);
       const [assignments, setAssignments] = useState(null);
       const [teamStatus, setTeamStatus] = useState({});
+      const [groupWins, setGroupWins] = useState({});
       const [lastUpdated, setLastUpdated] = useState(null);
       const [loading, setLoading] = useState(false);
       const [scoreError, setScoreError] = useState(null);
@@ -131,6 +132,7 @@
           if (!res.ok) throw new Error(`Could not load scores (${res.status})`);
           const data = await res.json();
           setTeamStatus(data.teamStatus || {});
+          setGroupWins(data.groupWins || {});
           setLastUpdated(data.lastUpdated || null);
         } catch (e) {
           setScoreError(e.message);
@@ -177,7 +179,16 @@
 
       function getTeamPoints(team) {
         const round = teamStatus[team.name];
-        return round ? (ROUND_POINTS[round] || 0) : 0;
+        const roundPts = round ? (ROUND_POINTS[round] || 0) : 0;
+        const winPts   = groupWins[team.name] || 0;
+        return roundPts + winPts;
+      }
+
+      function getTeamPointsBreakdown(team) {
+        const round    = teamStatus[team.name];
+        const roundPts = round ? (ROUND_POINTS[round] || 0) : 0;
+        const wins     = groupWins[team.name] || 0;
+        return { round, roundPts, wins };
       }
 
       function getParticipantScore(name) {
@@ -414,13 +425,15 @@
                           <div className="lb-name">{entry.name}</div>
                           <div className="pills">
                             {[...teams].sort((a,b)=>a.tier-b.tier).map(team => {
-                              const pts   = getTeamPoints(team);
-                              const round = teamStatus[team.name];
+                              const pts = getTeamPoints(team);
+                              const { round, roundPts, wins } = getTeamPointsBreakdown(team);
+                              const title = [round, wins>0?`${wins} group win${wins>1?"s":""}`:""].filter(Boolean).join(" · ") || "Group stage";
                               return (
-                                <span className={`pill ${pts>0?"active":""}`} key={team.name} title={round||"Group stage"}>
+                                <span className={`pill ${pts>0?"active":""}`} key={team.name} title={title}>
                                   {team.flag} {team.name}
-                                  {pts>0  && <span className="pill-pts">+{pts}</span>}
-                                  {round  && <span className="pill-round">{round}</span>}
+                                  {wins>0    && <span className="pill-round">{wins}W</span>}
+                                  {round     && <span className="pill-round">{round}</span>}
+                                  {pts>0     && <span className="pill-pts">+{pts}</span>}
                                 </span>
                               );
                             })}
@@ -437,7 +450,7 @@
 
                 <div className="pts-guide">
                   <strong style={{color:"#fff"}}>Points: </strong>
-                  {Object.entries(ROUND_POINTS).filter(([,v])=>v>0).map(([k,v])=>`${k} +${v}`).join(" · ")}
+                  Group stage win +1 · {Object.entries(ROUND_POINTS).filter(([,v])=>v>0).map(([k,v])=>`${k} +${v}`).join(" · ")}
                 </div>
               </div>
             )}

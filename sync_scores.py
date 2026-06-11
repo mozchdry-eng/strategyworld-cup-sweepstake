@@ -35,6 +35,12 @@ TEAM_NAME_MAP = {
 def normalise(name):
     return TEAM_NAME_MAP.get(name, name) if name else ""
 
+def is_group_stage(stage):
+    if not stage:
+        return False
+    s = stage.upper()
+    return "GROUP" in s
+
 def stage_to_round(stage):
     if not stage:
         return None
@@ -61,7 +67,8 @@ def fetch_matches():
         sys.exit(1)
 
 def build_team_status(matches):
-    reached = {}   # team -> round string
+    reached   = {}  # team -> furthest round string
+    group_wins = {}  # team -> number of group stage wins
 
     def promote(team, round_str):
         if not team or not round_str:
@@ -73,15 +80,21 @@ def build_team_status(matches):
 
     for m in matches:
         stage  = m.get("stage", "")
-        round_ = stage_to_round(stage)
-        if not round_:
-            continue
-
         home   = normalise(m.get("homeTeam", {}).get("name"))
         away   = normalise(m.get("awayTeam", {}).get("name"))
         winner = (m.get("score") or {}).get("winner")  # HOME_TEAM | AWAY_TEAM | DRAW
 
-        # Both teams reached this round
+        # Count group stage wins
+        if is_group_stage(stage) and winner in ("HOME_TEAM", "AWAY_TEAM"):
+            winner_team = home if winner == "HOME_TEAM" else away
+            if winner_team:
+                group_wins[winner_team] = group_wins.get(winner_team, 0) + 1
+
+        # Track furthest knockout round reached
+        round_ = stage_to_round(stage)
+        if not round_:
+            continue
+
         promote(home, round_)
         promote(away, round_)
 
@@ -92,7 +105,7 @@ def build_team_status(matches):
             if next_idx < len(ROUND_ORDER):
                 promote(winner_team, ROUND_ORDER[next_idx])
 
-    return reached
+    return reached, group_wins
 
 def main():
     if not API_KEY:
@@ -101,17 +114,18 @@ def main():
 
     data    = fetch_matches()
     matches = data.get("matches", [])
-    status  = build_team_status(matches)
+    status, group_wins = build_team_status(matches)
 
     output = {
         "lastUpdated": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "teamStatus":  status,
+        "groupWins":   group_wins,
     }
 
     with open("scores.json", "w") as f:
         json.dump(output, f, indent=2, ensure_ascii=False)
 
-    print(f"Written scores.json — {len(status)} teams with progress")
+    print(f"Written scores.json — {len(status)} teams with progress, {sum(group_wins.values())} group wins recorded")
 
 if __name__ == "__main__":
     main()
