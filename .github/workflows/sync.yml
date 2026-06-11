@@ -1,0 +1,34 @@
+name: Sync World Cup scores
+
+on:
+  schedule:
+    # 08:00 UTC = 09:00 BST (British Summer Time, UTC+1)
+    # The World Cup runs June–July when UK is on BST
+    - cron: '0 8 * * *'
+  workflow_dispatch:   # lets you click "Run workflow" manually in GitHub any time
+
+permissions:
+  contents: write      # needed to commit scores.json back to the repo
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+
+      - name: Fetch and process scores
+        env:
+          FOOTBALL_API_KEY: ${{ secrets.FOOTBALL_API_KEY }}
+        run: python3 sync_scores.py
+
+      - name: Commit updated scores.json
+        run: |
+          git config user.name  "Scores Bot"
+          git config user.email "scores-bot@users.noreply.github.com"
+          git add scores.json
+          # Only commit if scores.json actually changed
+          git diff --cached --quiet && echo "No changes to scores" || \
+            git commit -m "chore: update scores $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          git push
