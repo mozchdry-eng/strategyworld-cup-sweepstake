@@ -1,4 +1,8 @@
 {
-  "lastUpdated": null,
-  "teamStatus": {}
+  "lastUpdated": "2026-06-12T08:14:59Z",
+  "teamStatus": {},
+  "groupWins": {
+    "Mexico": 1,
+    "South Korea": 1
+  }
 }
