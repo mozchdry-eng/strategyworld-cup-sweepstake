@@ -2,7 +2,7 @@ name: Sync World Cup scores
 
 on:
   schedule:
-    # 08:00 UTC = 09:00 BST (British Summer Time, UTC+1)
+    # 07:00 UTC = 08:00 BST (British Summer Time, UTC+1)
     # The World Cup runs June–July when UK is on BST
     - cron: '0 7 * * *'
   workflow_dispatch:   # lets you click "Run workflow" manually in GitHub any time
@@ -32,3 +32,6 @@ jobs:
           git diff --cached --quiet && echo "No changes to scores" || \
             git commit -m "chore: update scores $(date -u +%Y-%m-%dT%H:%M:%SZ)"
           git push
+
+      - name: Keep workflow active (prevents GitHub disabling inactive schedules)
+        run: echo "Sync completed at $(date -u)"
