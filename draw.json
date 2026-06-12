@@ -1,4 +1,72 @@
 {
-  "participants": [],
-  "assignments": null
+  "participants": [
+    "Moz",
+    "Ffiona",
+    "Milly",
+    "Nathan",
+    "Andy",
+    "Connor"
+  ],
+  "assignments": {
+    "Moz": [
+      {"name": "Spain", "flag": "🇪🇸", "fifaRank": 2, "tier": 1},
+      {"name": "Morocco", "flag": "🇲🇦", "fifaRank": 8, "tier": 2},
+      {"name": "USA", "flag": "🇺🇸", "fifaRank": 16, "tier": 3},
+      {"name": "Austria", "flag": "🇦🇹", "fifaRank": 19, "tier": 4},
+      {"name": "Sweden", "flag": "🇸🇪", "fifaRank": 28, "tier": 5},
+      {"name": "Côte d'Ivoire", "flag": "🇨🇮", "fifaRank": 48, "tier": 6},
+      {"name": "Uzbekistan", "flag": "🇺🇿", "fifaRank": 57, "tier": 7},
+      {"name": "Haiti", "flag": "🇭🇹", "fifaRank": 76, "tier": 8}
+    ],
+    "Ffiona": [
+      {"name": "Brazil", "flag": "🇧🇷", "fifaRank": 6, "tier": 1},
+      {"name": "Netherlands", "flag": "🇳🇱", "fifaRank": 7, "tier": 2},
+      {"name": "Colombia", "flag": "🇨🇴", "fifaRank": 13, "tier": 3},
+      {"name": "Norway", "flag": "🇳🇴", "fifaRank": 20, "tier": 4},
+      {"name": "Algeria", "flag": "🇩🇿", "fifaRank": 36, "tier": 5},
+      {"name": "Tunisia", "flag": "🇹🇳", "fifaRank": 47, "tier": 6},
+      {"name": "Saudi Arabia", "flag": "🇸🇦", "fifaRank": 58, "tier": 7},
+      {"name": "Panama", "flag": "🇵🇦", "fifaRank": 72, "tier": 8}
+    ],
+    "Milly": [
+      {"name": "Argentina", "flag": "🇦🇷", "fifaRank": 3, "tier": 1},
+      {"name": "Switzerland", "flag": "🇨🇭", "fifaRank": 12, "tier": 2},
+      {"name": "Japan", "flag": "🇯🇵", "fifaRank": 18, "tier": 3},
+      {"name": "South Korea", "flag": "🇰🇷", "fifaRank": 25, "tier": 4},
+      {"name": "Egypt", "flag": "🇪🇬", "fifaRank": 33, "tier": 5},
+      {"name": "Czechia", "flag": "🇨🇿", "fifaRank": 40, "tier": 6},
+      {"name": "South Africa", "flag": "🇿🇦", "fifaRank": 67, "tier": 7},
+      {"name": "New Zealand", "flag": "🇳🇿", "fifaRank": 88, "tier": 8}
+    ],
+    "Nathan": [
+      {"name": "Portugal", "flag": "🇵🇹", "fifaRank": 4, "tier": 1},
+      {"name": "Croatia", "flag": "🇭🇷", "fifaRank": 11, "tier": 2},
+      {"name": "Mexico", "flag": "🇲🇽", "fifaRank": 15, "tier": 3},
+      {"name": "Australia", "flag": "🇦🇺", "fifaRank": 27, "tier": 4},
+      {"name": "Canada", "flag": "🇨🇦", "fifaRank": 30, "tier": 5},
+      {"name": "Qatar", "flag": "🇶🇦", "fifaRank": 53, "tier": 6},
+      {"name": "Jordan", "flag": "🇯🇴", "fifaRank": 64, "tier": 7},
+      {"name": "Martinique", "flag": "🇲🇶", "fifaRank": 86, "tier": 8}
+    ],
+    "Andy": [
+      {"name": "England", "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "fifaRank": 5, "tier": 1},
+      {"name": "Germany", "flag": "🇩🇪", "fifaRank": 9, "tier": 2},
+      {"name": "Uruguay", "flag": "🇺🇾", "fifaRank": 17, "tier": 3},
+      {"name": "Ecuador", "flag": "🇪🇨", "fifaRank": 23, "tier": 4},
+      {"name": "Paraguay", "flag": "🇵🇾", "fifaRank": 38, "tier": 5},
+      {"name": "Ghana", "flag": "🇬🇭", "fifaRank": 43, "tier": 6},
+      {"name": "Cabo Verde", "flag": "🇨🇻", "fifaRank": 70, "tier": 7},
+      {"name": "DR Congo", "flag": "🇨🇩", "fifaRank": 84, "tier": 8}
+    ],
+    "Connor": [
+      {"name": "France", "flag": "🇫🇷", "fifaRank": 1, "tier": 1},
+      {"name": "Belgium", "flag": "🇧🇪", "fifaRank": 10, "tier": 2},
+      {"name": "Senegal", "flag": "🇸🇳", "fifaRank": 14, "tier": 3},
+      {"name": "Iran", "flag": "🇮🇷", "fifaRank": 21, "tier": 4},
+      {"name": "Bosnia & Herz.", "flag": "🇧🇦", "fifaRank": 39, "tier": 5},
+      {"name": "Iraq", "flag": "🇮🇶", "fifaRank": 56, "tier": 6},
+      {"name": "Scotland", "flag": "🏴󠁧󠁢󠁳󠁣󠁴󠁿", "fifaRank": 61, "tier": 7},
+      {"name": "Curaçao", "flag": "🇨🇼", "fifaRank": 82, "tier": 8}
+    ]
+  }
 }
