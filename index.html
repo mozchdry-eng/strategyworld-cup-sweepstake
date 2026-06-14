@@ -188,7 +188,8 @@
         setLoading(true);
         setScoreError(null);
         try {
-          const res = await fetch("./scores.json?t=" + Date.now());
+          // cache: 'no-store' forces browser to always fetch fresh, ignoring cache headers
+          const res = await fetch("./scores.json?t=" + Date.now(), { cache: "no-store" });
           if (!res.ok) throw new Error(`Could not load scores (${res.status})`);
           const data = await res.json();
           setTeamStatus(data.teamStatus || {});
@@ -201,7 +202,9 @@
         }
       }, []);
 
-      useEffect(() => { fetchScores(); }, [assignments]);
+      // Fetch scores on mount AND whenever assignments change
+      useEffect(() => { fetchScores(); }, []);
+      useEffect(() => { if (assignments) fetchScores(); }, [assignments]);
 
       function runDraw() {
         const names = participants.filter(p => p.trim());
