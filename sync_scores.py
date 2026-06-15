@@ -84,6 +84,12 @@ def build_team_status(matches):
         away   = normalise(m.get("awayTeam", {}).get("name"))
         winner = (m.get("score") or {}).get("winner")  # HOME_TEAM | AWAY_TEAM | DRAW
 
+        # All group stage participants get at least "Group Stage" status
+        if is_group_stage(stage):
+            for team in [home, away]:
+                if team and team not in reached:
+                    reached[team] = "Group Stage"
+
         # Count group stage wins
         if is_group_stage(stage) and winner in ("HOME_TEAM", "AWAY_TEAM"):
             winner_team = home if winner == "HOME_TEAM" else away
