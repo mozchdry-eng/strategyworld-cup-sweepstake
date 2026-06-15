@@ -1,11 +1,39 @@
 {
-  "lastUpdated": "2026-06-14T13:16:44Z",
-  "teamStatus": {},
+  "lastUpdated": "2026-06-15T09:00:25Z",
+  "teamStatus": {
+    "Mexico": "Group Stage",
+    "South Africa": "Group Stage",
+    "South Korea": "Group Stage",
+    "Czechia": "Group Stage",
+    "Canada": "Group Stage",
+    "Bosnia & Herz.": "Group Stage",
+    "USA": "Group Stage",
+    "Paraguay": "Group Stage",
+    "Qatar": "Group Stage",
+    "Switzerland": "Group Stage",
+    "Brazil": "Group Stage",
+    "Morocco": "Group Stage",
+    "Haiti": "Group Stage",
+    "Scotland": "Group Stage",
+    "Australia": "Group Stage",
+    "Turkey": "Group Stage",
+    "Germany": "Group Stage",
+    "Curaçao": "Group Stage",
+    "Netherlands": "Group Stage",
+    "Japan": "Group Stage",
+    "Ivory Coast": "Group Stage",
+    "Ecuador": "Group Stage",
+    "Sweden": "Group Stage",
+    "Tunisia": "Group Stage"
+  },
   "groupWins": {
     "Mexico": 1,
     "South Korea": 1,
     "USA": 1,
     "Scotland": 1,
-    "Australia": 1
+    "Australia": 1,
+    "Germany": 1,
+    "Ivory Coast": 1,
+    "Sweden": 1
   }
 }
