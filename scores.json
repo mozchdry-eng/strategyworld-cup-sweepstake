@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-06-15T20:18:13Z",
+  "lastUpdated": "2026-06-16T19:57:07Z",
   "teamStatus": {
     "Mexico": "Group Stage",
     "South Africa": "Group Stage",
@@ -26,7 +26,13 @@
     "Sweden": "Group Stage",
     "Tunisia": "Group Stage",
     "Spain": "Group Stage",
-    "Cape Verde Islands": "Group Stage"
+    "Cape Verde Islands": "Group Stage",
+    "Belgium": "Group Stage",
+    "Egypt": "Group Stage",
+    "Saudi Arabia": "Group Stage",
+    "Uruguay": "Group Stage",
+    "Iran": "Group Stage",
+    "New Zealand": "Group Stage"
   },
   "groupWins": {
     "Mexico": 1,
