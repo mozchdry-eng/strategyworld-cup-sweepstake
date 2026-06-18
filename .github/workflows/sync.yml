@@ -31,6 +31,7 @@ jobs:
           # Only commit if scores.json actually changed
           git diff --cached --quiet && echo "No changes to scores" || \
             git commit -m "chore: update scores $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          git pull --rebase origin main
           git push
 
       - name: Keep workflow active (prevents GitHub disabling inactive schedules)
