@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-06-17T17:41:00Z",
+  "lastUpdated": "2026-06-18T08:18:02Z",
   "teamStatus": {
     "Mexico": "Group Stage",
     "South Africa": "Group Stage",
@@ -40,7 +40,15 @@
     "Argentina": "Group Stage",
     "Algeria": "Group Stage",
     "Austria": "Group Stage",
-    "Jordan": "Group Stage"
+    "Jordan": "Group Stage",
+    "Portugal": "Group Stage",
+    "DR Congo": "Group Stage",
+    "England": "Group Stage",
+    "Croatia": "Group Stage",
+    "Ghana": "Group Stage",
+    "Panama": "Group Stage",
+    "Uzbekistan": "Group Stage",
+    "Colombia": "Group Stage"
   },
   "groupWins": {
     "Mexico": 1,
@@ -54,6 +62,9 @@
     "France": 1,
     "Norway": 1,
     "Argentina": 1,
-    "Austria": 1
+    "Austria": 1,
+    "England": 1,
+    "Ghana": 1,
+    "Colombia": 1
   }
 }
