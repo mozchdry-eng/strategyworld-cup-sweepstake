@@ -32,6 +32,8 @@ TEAM_NAME_MAP = {
     "Cape Verde":               "Cabo Verde",
     "Cape Verde Islands":       "Cabo Verde",
     "Congo DR":                 "DR Congo",
+    "Turkey":                   "Türkiye",
+    "Türkiye":                  "Türkiye",
 }
 
 def normalise(name):
