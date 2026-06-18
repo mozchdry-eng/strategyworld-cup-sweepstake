@@ -26,9 +26,11 @@ TEAM_NAME_MAP = {
     "Korea Republic":           "South Korea",
     "Cote d'Ivoire":            "Côte d'Ivoire",
     "Côte d'Ivoire":            "Côte d'Ivoire",
+    "Ivory Coast":              "Côte d'Ivoire",
     "Bosnia and Herzegovina":   "Bosnia & Herz.",
     "Bosnia-Herzegovina":       "Bosnia & Herz.",
     "Cape Verde":               "Cabo Verde",
+    "Cape Verde Islands":       "Cabo Verde",
     "Congo DR":                 "DR Congo",
 }
 
