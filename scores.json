@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-06-23T16:15:39Z",
+  "lastUpdated": "2026-06-24T15:39:09Z",
   "teamStatus": {
     "Mexico": "Group Stage",
     "South Africa": "Group Stage",
@@ -65,7 +65,7 @@
     "Austria": 1,
     "England": 1,
     "Ghana": 1,
-    "Colombia": 1,
+    "Colombia": 2,
     "Switzerland": 1,
     "Canada": 1,
     "Morocco": 1,
@@ -75,6 +75,8 @@
     "Japan": 1,
     "Spain": 1,
     "Egypt": 1,
-    "Algeria": 1
+    "Algeria": 1,
+    "Portugal": 1,
+    "Croatia": 1
   }
 }
