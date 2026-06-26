@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-06-25T16:10:42Z",
+  "lastUpdated": "2026-06-26T15:30:45Z",
   "teamStatus": {
     "Mexico": "Group Stage",
     "South Africa": "Group Stage",
@@ -57,7 +57,7 @@
     "Scotland": 1,
     "Australia": 1,
     "Germany": 2,
-    "Côte d'Ivoire": 1,
+    "Côte d'Ivoire": 2,
     "Sweden": 1,
     "France": 2,
     "Norway": 2,
@@ -71,7 +71,7 @@
     "Morocco": 2,
     "Brazil": 2,
     "Paraguay": 1,
-    "Netherlands": 1,
+    "Netherlands": 2,
     "Japan": 1,
     "Spain": 1,
     "Egypt": 1,
@@ -79,6 +79,8 @@
     "Portugal": 1,
     "Croatia": 1,
     "Bosnia & Herz.": 1,
-    "South Africa": 1
+    "South Africa": 1,
+    "Ecuador": 1,
+    "Türkiye": 1
   }
 }
