@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-07-03T13:22:50Z",
+  "lastUpdated": "2026-07-04T11:53:37Z",
   "teamStatus": {
     "Mexico": "Round of 16",
     "South Africa": "Round of 32",
@@ -15,7 +15,7 @@
     "Morocco": "Round of 16",
     "Haiti": "Group Stage",
     "Scotland": "Group Stage",
-    "Australia": "Group Stage",
+    "Australia": "Round of 32",
     "Türkiye": "Group Stage",
     "Germany": "Round of 32",
     "Curaçao": "Group Stage",
@@ -26,9 +26,9 @@
     "Sweden": "Round of 32",
     "Tunisia": "Group Stage",
     "Spain": "Round of 16",
-    "Cabo Verde": "Group Stage",
+    "Cabo Verde": "Round of 32",
     "Belgium": "Round of 16",
-    "Egypt": "Group Stage",
+    "Egypt": "Round of 16",
     "Saudi Arabia": "Group Stage",
     "Uruguay": "Group Stage",
     "Iran": "Group Stage",
@@ -37,7 +37,7 @@
     "Senegal": "Round of 32",
     "Iraq": "Group Stage",
     "Norway": "Round of 16",
-    "Argentina": "Group Stage",
+    "Argentina": "Round of 16",
     "Algeria": "Round of 32",
     "Austria": "Round of 32",
     "Jordan": "Group Stage",
@@ -45,10 +45,10 @@
     "DR Congo": "Round of 32",
     "England": "Round of 16",
     "Croatia": "Round of 32",
-    "Ghana": "Group Stage",
+    "Ghana": "Round of 32",
     "Panama": "Group Stage",
     "Uzbekistan": "Group Stage",
-    "Colombia": "Group Stage"
+    "Colombia": "Round of 16"
   },
   "groupWins": {
     "Mexico": 3,
